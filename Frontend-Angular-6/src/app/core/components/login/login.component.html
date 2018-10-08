@@ -1,0 +1,16 @@
+<div class="login-page ">
+    <div class="form">
+        <form class="login-form" #login="ngForm" (ngSubmit)="send(login.value)">
+            <label for=" name">First name</label>
+            <input class="form-control" #name="ngModel" [(ngModel)]="user.name" type="text" placeholder="First name..." name="name" required>
+            <span *ngIf="name.invalid && name.touched && name?.errors.required">Missing First name</span>
+            <label for="password">Password</label>
+            <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" minlength="4" placeholder="Password..." required />
+            <span *ngIf="password.invalid && password.touched && password?.errors.required">Missing password</span>
+            <span *ngIf="password.invalid && password.touched && password?.errors.minlength">Illegal password</span><br>
+            <button [disabled]="login.form.invalid ">login</button>
+            <span> {{msg}}</span>
+        </form>
+    </div>
+
+</div>

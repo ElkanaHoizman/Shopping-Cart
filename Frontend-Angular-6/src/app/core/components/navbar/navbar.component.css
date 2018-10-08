@@ -1,0 +1,7 @@
+.navbar-light .navbar-brand {
+    color: #8e44ad;
+}
+
+a.dropdown-item {
+    cursor: pointer;
+}

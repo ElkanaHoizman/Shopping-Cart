@@ -1,0 +1,20 @@
+div.btn.btn-secondary {
+    width: 100%;
+    padding: 0px;
+}
+
+.plus {
+    float: right;
+}
+
+.none {
+    display: none;
+}
+
+.minus {
+    float: left;
+}
+
+div.btn.btn-secondary:hover>.plus {
+    display: block;
+}

@@ -1,0 +1,7 @@
+.ng-invalid.ng-touched:not(form) {
+    background-color: red;
+}
+
+span {
+    color: red;
+}

@@ -1,0 +1,60 @@
+<div class="col-md-9 col-sm-6">
+    <button class="btn btn-primary btn-sm float-left" routerLink="/product" [queryParams]="{id:cart}">Back to shop</button>
+    <div *ngIf="cartsid !== undefined && cartsid.length > 0; else no">
+        <button class="btn btn- btn-warning float-right" routerLink="/order" [queryParams]="{id:cart}">order</button><br><br>
+    </div>
+</div>
+<div class="col-md-9 col-sm-6" *ngIf="cartsid !== undefined && cartsid.length > 0; else noCart">
+    <h1>Shopping Cart</h1>
+    <p>You Have <b>{{ total_amount}} </b>items in your cart
+        <button class="btn btn-danger btn-sm float-right " (click)="clearAll() ">Clear Shopping Cart</button>
+    </p>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Item</th>
+                <th class="text-center" style="width:25%">Qty</th>
+                <th class="text-right">Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartsid">
+                <td>
+                    <img [src]="item.productid.imageurl" alt="" width="35%" height='50px'>
+                </td>
+                <td>{{item.productid.productname}}</td>
+                <input hidden type=" number " #quantity [value]=item.amount>
+                <td class="text-center"><button type="button " class="btn btn-primary plus" (click)="plus(item.productid._id,  quantity ,this.cart) ">+</button> {{ quantity.value}}
+                    <button [disabled]='quantity.value==1 || quantity.value==0 ' type="button " class="btn btn-primary minus" (click)="minus( item.productid._id ,quantity ,this.cart) ">-</button>
+                </td>
+                <td class="text-center">{{item.generalprice | currency}}</td>
+                <td class="text-center"><button class="btn btn-outline-danger" (click)="clear_item(item._id)">x</button> </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="table-secondary">
+                <th>Total Price: </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="text-right">{{ total_price| currency}}</th>
+                <!-- <app-navbar [total]=' total_amount '></app-navbar> -->
+            </tr>
+            <tr>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<app-navbar [total]=' total_amount '></app-navbar>
+
+<ng-template #noCart>
+    <br>
+    <p>You don 't have any item in your cart</p>
+</ng-template>
+<ng-template #no>
+    <p></p>
+</ng-template>

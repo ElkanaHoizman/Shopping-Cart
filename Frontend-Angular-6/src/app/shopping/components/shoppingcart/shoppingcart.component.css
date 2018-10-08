@@ -1,0 +1,32 @@
+ .style {
+     position: absolute;
+     top: 59px;
+     right: 0px;
+     z-index: -1;
+ }
+ 
+ img.start {
+     border-radius: 41px;
+     margin: 81px 19px 16px 113px;
+     cursor: pointer;
+ }
+ 
+ h1 {
+     color: blueviolet;
+     position: relative;
+     left: 80px;
+     background: #218838;
+     padding: 10px;
+     width: 26%;
+     border-radius: 35px;
+     cursor: pointer;
+ }
+ 
+ .alert.alert-primary {
+     width: 50%;
+     margin-left: 8%;
+ }
+ 
+ .Continue {
+     width: 35%;
+ }

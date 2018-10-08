@@ -1,0 +1,16 @@
+.col-md-4.col-sm-4 {
+    display: inline-block;
+}
+
+
+/* #content {
+    display: none;
+} */
+
+.ng-invalid.ng-touched:not(form) {
+    background-color: red;
+}
+
+span {
+    color: red;
+}

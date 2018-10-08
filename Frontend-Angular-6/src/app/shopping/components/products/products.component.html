@@ -1,0 +1,33 @@
+<div class="alert alert-success col-md-3 col-sm-3">
+    <strong>Quantity of {{category}} products:</strong><b>{{Qty_products}}</b>
+</div>
+
+<div class="col-md-9 col-sm-12">
+    <app-filter-category-manager></app-filter-category-manager>
+</div>
+
+
+
+<div class="input-group col-md-4">
+    <input class="form-control py-2" type="search" placeholder="search...." [(ngModel)]="term">
+    <span class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </span>
+</div><br>
+
+<button type="button" class="btn btn-primary" routerLink="/add">Add Products +</button>
+<div class="col-md-12 col-sm-12" *ngIf='products'>
+
+    <div class="card col-md-3 col-sm-5 m-3" *ngFor=' let product of products  |filter:term '>
+        <button type="button" class="btn btn-success" routerLink="/edit/{{product._id}}"> <i class="material-icons">border_color</i></button>
+        <div class="card-body">
+            <img class="card-img-top" src="{{ product.imageurl}}" alt="{{ product.productname}}" width='100%' height='100px'>
+            <h4 class="card-title">{{ product.productname}}</h4>
+            <p class="card-text"> {{ product.price |currency }}</p>
+            <p class="card-text"> {{ product.categoryid.name }}</p>
+
+        </div>
+    </div>
+</div>

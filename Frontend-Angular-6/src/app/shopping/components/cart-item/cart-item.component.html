@@ -1,0 +1,22 @@
+<div *ngIf="Qty">
+    <div *ngIf="Qty.length > 0">
+        <input hidden type=" number " #quantity [value]=Qty[0].amount>
+        <div class="btn btn-secondary ">
+            <button [hidden]='quantity.value == 0' type="button " class="btn btn-primary minus" (click)="minus( productid ,quantity ,cart) ">-</button>
+            <span [hidden]='quantity.value == 0'>{{quantity.value}}</span>
+            <span [hidden]='quantity.value !=0'>Add to Cart</span>
+            <button type="button " class="btn btn-primary plus" [class.none]="quantity.value == 0" (click)="plus(productid,  quantity ,cart) ">+</button>
+
+        </div>
+    </div>
+    <div *ngIf="Qty.length === 0">
+        <input hidden type=" number " #quantity [value]='0'>
+        <div class="btn btn-secondary ">
+            <button [hidden]='quantity.value == 0' type="button " class="btn btn-primary minus" (click)="minus( productid ,quantity ,cart) ">-</button>
+            <span [hidden]='quantity.value == 0'>{{quantity.value}}</span>
+            <span [hidden]='quantity.value !=0'>Add to Cart</span>
+            <button type="button " class="btn btn-primary plus" [class.none]="quantity.value == 0" (click)="plus(productid,  quantity ,cart) ">+</button>
+
+        </div>
+    </div>
+</div>

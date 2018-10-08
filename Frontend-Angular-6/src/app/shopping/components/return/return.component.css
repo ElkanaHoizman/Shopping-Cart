@@ -1,0 +1,9 @@
+#content {
+    display: none;
+}
+
+button.btn.btn-success {
+    padding: 50px;
+    border-radius: 100px;
+    margin-left: 230px;
+}

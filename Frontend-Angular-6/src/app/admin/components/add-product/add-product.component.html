@@ -1,0 +1,30 @@
+<button class="btn btn-primary btn-sm float-left" routerLink="/">Back </button><br><br>
+<form #myForm="ngForm" (ngSubmit)="send(myForm.value)" class="col-md-12">
+    <label for="name">Name:</label>
+    <input class="form-control " #productname="ngModel" [(ngModel)]="prodcut.name" type="text" placeholder="name..." name="productname" autofocus required>
+    <span *ngIf="productname.invalid && productname.touched">Missing Name</span>
+    <br>
+    <div *ngIf="categorys">
+        <label for="category">Category:</label>
+        <select class="form-control" #categoryid="ngModel" [(ngModel)]="prodcut.category" type="select" name="categoryid" required>
+<option *ngFor="let item of categorys.data" value="{{item._id}}">{{item.name}}</option>
+
+</select>
+        <span *ngIf="categoryid.invalid && categoryid.touched">Missing category Name</span>
+    </div>
+    <br>
+    <label for="price">Price:</label>
+    <input class="form-control " #price="ngModel" [(ngModel)]="prodcut.price" type="text" placeholder="price..." name="price" required>
+    <span *ngIf="price.invalid && price.touched ">Missing price</span>
+    <br>
+
+    <label for="imageurl">Imageurl:</label>
+    <input class="form-control " #imageurl="ngModel" [(ngModel)]="prodcut.imageurl" type="url" placeholder="imageurl..." name="imageurl" pattern="https?://.+" required>
+    <span *ngIf="imageurl.invalid && imageurl.touched ">Missing imageurl</span>
+    <br>
+
+
+    <button [disabled]="myForm.form.invalid">Send</button>
+
+</form>
+<!-- </div> -->

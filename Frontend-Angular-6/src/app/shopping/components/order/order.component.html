@@ -1,0 +1,98 @@
+<div class="col-md-9 col-sm-6">
+    <!-- <button class="btn btn-primary btn-sm float-right" (click)="downloadPDF()">print</button> -->
+    <button class="btn btn-primary btn-sm float-left" routerLink="/product" [queryParams]="{id:cart}">Back to shop</button><br><br>
+</div>
+<div class="col-md-12 col-sm-12">
+    <div class="col-md-4 col-sm-4">
+        <h1>Shopping Cart</h1>
+        <p>You Have <b>{{ total_amount}} </b>items in your cart
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Item</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-right">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cartsid">
+                    <td>
+                        <img [src]="item.productid.imageurl" alt="" width="100%" height='50px'>
+                    </td>
+                    <td>{{item.productid.productname}}</td>
+                    <td>{{item.amount}}</td>
+                    <td class="text-center">{{item.generalprice | currency}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="table-secondary">
+                    <th>Total Price: </th>
+                    <th></th>
+                    <th></th>
+                    <th class="text-right">{{ total_price| currency}}</th>
+                    <app-navbar [total]=' total_amount '></app-navbar>
+                </tr>
+                <tr>
+
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="col-md-4 col-sm-4 float-right">
+        <h1>Details</h1>
+        <hr> {{order.userid}}
+        <form #myForm="ngForm" (ngSubmit)="orders(myForm.value)" (dblclick)="user()">
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input class="form-control" #city="ngModel" [(ngModel)]="order.city" value="{{order.city}}" type="text" placeholder="City..." name="city" autofocus required>
+                <span *ngIf="city.invalid && city.touched">Missing City</span>
+            </div>
+
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input class="form-control " #street="ngModel" [(ngModel)]="order.street" type="text" placeholder="street..." name="street" autofocus required>
+                <span *ngIf="street.invalid && street.touched">Missing Street</span>
+            </div>
+            <div class="form-group">
+                <label for="date">shipping Date:</label>
+                <input class="form-control " #shippingdate="ngModel" [(ngModel)]="order.shippingdate" type="date" placeholder="shippingdate..." name="shippingdate" autofocus required>
+                <span *ngIf="shippingdate.invalid && shippingdate.touched">Missing Shipping Date</span>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Credit Card:</label>
+                <input class="form-control " #digits="ngModel" [(ngModel)]="order.digits" type="text" placeholder="Credit Card..." name="digits" autofocus required>
+                <span *ngIf="digits.invalid && digits.touched">Missing Name</span>
+            </div>
+            <button class="btn btn-outline-warning float-right" [disabled]="myForm.form.invalid">Order</button>
+        </form>
+    </div>
+</div>
+
+<!-- <div id="content" #content class="col-md-4 col-sm-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th class="text-center">Qty</th>
+                <th class="text-right">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartsid">
+                <td>{{item.productid.productname}}</td>
+                <td>{{item.amount}}</td>
+                <td class="text-center">{{item.generalprice | currency}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="table-secondary">
+                <th>Total Price: </th>
+                <th></th>
+                <th class="text-right">{{ total_price| currency}}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div> -->

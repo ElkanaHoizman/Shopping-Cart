@@ -1,0 +1,47 @@
+     .main {
+         position: absolute;
+         top: 59px;
+         right: 0px;
+         z-index: -1;
+     }
+     
+     .col-md-6 {
+         display: inline-block;
+     }
+     
+     button.btn.btn-success {
+         padding: 80px;
+         position: relative;
+         bottom: 69px;
+         border-radius: 63px;
+         margin: 100px
+     }
+     
+     @media only screen and (max-width: 1000px) {
+         .col-md-6[_ngcontent-c2] {
+             display: block;
+             margin-bottom: 111px;
+             max-width: 100%;
+         }
+         .main {
+             position: absolute;
+             top: 59px;
+             z-index: -1;
+         }
+         button.btn.btn-success[_ngcontent-c2][_ngcontent-c2] {
+             left: 138px;
+             position: initial
+         }
+     }
+     
+     @media only screen and (max-width: 770px) {
+         .col-md-6[_ngcontent-c2] {
+             position: relative;
+             right: 80px;
+         }
+         @media only screen and (max-width:5000px) {
+             button.btn.btn-success[_ngcontent-c2] {
+                 padding: 50px;
+             }
+         }
+     }

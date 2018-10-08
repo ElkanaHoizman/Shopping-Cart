@@ -1,0 +1,32 @@
+<!-- <button class="btn btn-primary btn-sm float-right" (click)="downloadPDF()">print</button> -->
+<button type="button" class="btn btn-success">
+<h1>Your canning was successful!</h1><hr>
+<a class="list-group-item active" (click)="downloadPDF()">To download the receipt click here</a><br>
+<button type="button" class="btn btn-warning" (click)="Approval()"> Approval</button>
+</button>
+<div id="content" #content class="col-md-4 col-sm-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th class="text-center">Qty</th>
+                <th class="text-right">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartsid">
+                <td>{{item.productid.productname}}</td>
+                <td>{{item.amount}}</td>
+                <td class="text-center">{{item.generalprice | currency}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="table-secondary">
+                <th>Total Price: </th>
+                <th></th>
+                <th class="text-right">{{ total_price| currency}}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>

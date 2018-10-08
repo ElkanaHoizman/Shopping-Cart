@@ -1,0 +1,24 @@
+ .card {
+     display: inline-block;
+ }
+ 
+ .card {
+     padding: 0px;
+ }
+ 
+ strong {
+     margin-right: 5px;
+ }
+ 
+ button.btn.btn-primary.btn-sm.float-right {
+     margin-right: 192px;
+ }
+ 
+ .alert.alert-success.col-md-3.col-sm-3 {
+     margin-left: 28px;
+     padding: 15px 5px;
+ }
+ 
+ span.badge.badge-warning {
+     margin-left: 7px;
+ }

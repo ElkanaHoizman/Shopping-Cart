@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container">
+        <a [hidden]="status === 'admin' || status === '' || id === undefined  " class="navbar-brand" routerLink="/product" [queryParams]="{id:id}" (click)="navbarCollapsed = false">Oshop
+      <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+    </a>
+        <a [hidden]="status === 'client' || status === ''  " class="navbar-brand" routerLink="/" (click)="navbarCollapsed = false">Oshop
+  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+</a>
+        <button class="navbar-toggler" (click)="navbarCollapsed = !navbarCollapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" [attr.aria-expanded]="!navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li (click)="navbarCollapsed = false" class="nav-item">
+                    <a class="nav-link" [hidden]="status === 'admin' || status === '' || id === undefined ">
+                        <span class="navFixes hide-mobile">Cart</span>
+                        <a routerLink="/cart" [queryParams]="{id:id}"><i class=" fa fa-shopping-cart" aria-hidden="true"></i></a>
+                        <span class="badge badge-warning">{{total}} </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li ngbDropdown class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>{{name}}</a>
+                    <div ngbDropdownMenu (click)="navbarCollapsed = false" class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" (click)='Logout()'>Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>

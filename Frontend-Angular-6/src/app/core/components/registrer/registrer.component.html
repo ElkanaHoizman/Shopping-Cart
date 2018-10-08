@@ -1,0 +1,65 @@
+<div class="testbox">
+    <div class="registr">
+        <h1>Registration</h1>
+        <form [hidden]=" continued == true " #myForm="ngForm" (ngSubmit)="send(myForm.value)">
+            <hr>
+            <label for="email"><i class="icon-envelope icon "></i></label>
+            <input #email="ngModel" [(ngModel)]="user.email" type="email" placeholder="Email..." name="email" email required>
+            <span *ngIf="email.invalid && email.touched && email?.errors.required">Missing Email</span>
+            <span *ngIf="email.invalid && email.touched && email?.errors.email">Illegal Email</span>
+            <br>
+            <label for="id"><i class="icon-user icon"></i></label>
+            <input #userid="ngModel" [(ngModel)]="user.userid" type="text" name="userid" placeholder=" Id..." minlength="9" required />
+            <span *ngIf="userid.invalid && userid.touched && userid?.errors.required">Missing ID card 9 digits</span>
+            <span *ngIf="userid.invalid && userid.touched && userid?.errors.minlength">Illegal id</span>
+            <br>
+
+            <label for="password"><i class="icon-shield icon"></i></label>
+            <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" minlength="4" placeholder="Password..." required />
+            <span *ngIf="password.invalid && password.touched && password?.errors.required">Missing password</span>
+            <span *ngIf="password.invalid && password.touched && password?.errors.minlength">Illegal password</span><br>
+
+
+            <label for="password2"><i class="icon-shield icon"></i></label>
+            <input #password2="ngModel" [(ngModel)]="user.password2" type="password" name="password2" minlength="4" placeholder="Password again..." required />
+            <span *ngIf="password2.invalid && password2.touched && password2?.errors.required">Missing password</span>
+            <span *ngIf="password2.invalid && password2.touched && password2?.errors.minlength">Illegal password</span><br>
+            <span *ngIf=" password2.touched && password.value !== password2.value ">Unwording passwords</span>
+
+            <button class="button" [hidden]="myForm.form.invalid || password.value !== password2.value ">Register</button>
+        </form>
+    </div>
+    <div *ngIf='continued' class="col-10 m-2">
+        <form #Registration="ngForm" (ngSubmit)="registr(Registration.value)">
+            <label for="City">City</label>
+            <select #city="ngModel" [(ngModel)]="user.city" name='city' class="form-control" required>
+          <option>Jerusalem</option>
+          <option>Tel Aviv</option>
+          <option>Ramat Gan</option>
+          <option>Givatayim</option>
+          <option>Haifa</option>
+          <option>Afula</option>
+          <option>Beer Sheva</option>
+          <option>Eilat</option>
+      </select>
+            <span *ngIf=" city.invalid && city.touched && city?.errors.required">Missing city</span>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input class="form-control" #address="ngModel" [(ngModel)]="user.street" type="text" placeholder="Address..." name="address" required>
+                <span *ngIf="address.invalid && address.touched && address?.errors.required">Missing address</span>
+            </div>
+            <div class="form-group">
+                <label for=" name">First name</label>
+                <input class="form-control" #name="ngModel" [(ngModel)]="user.name" type="text" placeholder="First name..." name="name" required>
+                <span *ngIf="name.invalid && name.touched && name?.errors.required">Missing First name</span>
+            </div>
+            <div class="form-group">
+                <label for=" lastname">Last name</label>
+                <input class="form-control" #lastname="ngModel" [(ngModel)]="user.lastname" type="text" placeholder="Last name..." name=" lastname" required>
+                <span *ngIf=" lastname.invalid &&  lastname.touched &&  lastname?.errors.required">Missing Last name</span>
+            </div>
+            <button class="button" [disabled]="Registration.form.invalid ">Register</button>
+        </form>
+    </div>
+</div>
+<!-- <app-navbar [name]='name'></app-navbar> -->
